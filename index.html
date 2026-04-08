@@ -7,176 +7,223 @@
 
 <style>
 body {
-  font-family: Arial;
-  margin:0;
-  background:#0f172a;
-  color:white;
-}
+  font-family: 'Poppins', 'Segoe UI', sans-serif;margin:0;font-family:'Segoe UI',sans-serif;background:#0f172a;color:white;scroll-behavior:smooth;}
+header {text-align:center;padding:80px 20px;background:linear-gradient(135deg,#020617,#1e293b);} 
+h1 {font-size:42px;color:#38bdf8;}
+.tagline {color:#94a3b8;}
+button {margin-top:20px;padding:12px 25px;background:#38bdf8;border:none;border-radius:8px;color:black;font-weight:bold;}
 
-/* HEADER */
-header {
-  text-align:center;
-  padding:40px;
-  background:#020617;
-}
-
-h1 {
-  font-size:40px;
-  color:#38bdf8;
-}
-
-/* TEAM FRONT */
-.team-front {
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
-
-.team-front div {
-  text-align:center;
-}
-
-.team-front img {
+.team {display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:30px;}
+.card {background:#1e293b;padding:15px;border-radius:15px;width:150px;text-align:center;transition:0.3s;}
+.card img {
   width:80px;
   height:80px;
   border-radius:50%;
-  border:2px solid #38bdf8;
+  object-fit:cover;
 }
 
-/* SECTIONS */
+.card p {
+  color:#ffffff;
+  font-weight:700;
+  margin-top:8px;
+}
+.card:hover {transform:scale(1.05);} 
+
+.features,.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:40px;}
+.box,.card2 {background:#1e293b;padding:20px;border-radius:12px;transition:0.3s;}
+.box:hover,.card2:hover {transform:translateY(-5px);}
+
+.chart {text-align:center;padding:40px;}
+.bar {height:20px;background:#38bdf8;margin:10px 0;border-radius:5px;}
+
+.map {text-align:center;padding:40px;}
+.map img {width:80%;border-radius:12px;}
+
+footer {text-align:center;padding:20px;color:#94a3b8;}
+
+/* DARK/LIGHT MODE */
+.light-mode { background:#f1f5f9; color:black; }
+.toggle-btn { position:fixed; top:20px; right:20px; padding:10px 15px; background:#22c55e; border:none; border-radius:8px; cursor:pointer; }
+
+/* SCROLL ANIMATION */
+.fade { opacity:0; transform:translateY(20px); transition:1s; }
+.show { opacity:1; transform:translateY(0); }
+
+.marketing { color:#f97316; font-weight:bold; }
+.finance { color:#22c55e; font-weight:bold; }
+
+
+/* COLORFUL HEADINGS */
+.grid .card2:nth-child(5) h3 { color:#f97316; } /* Marketing */
+.grid .card2:nth-child(6) h3 { color:#22c55e; } /* Finance */
+.grid .card2:nth-child(1) h3 { color:#38bdf8; }
+.grid .card2:nth-child(2) h3 { color:#eab308; }
+.grid .card2:nth-child(3) h3 { color:#a855f7; }
+.grid .card2:nth-child(4) h3 { color:#06b6d4; }
+.grid .card2:nth-child(7) h3 { color:#ef4444; }
+.grid .card2:nth-child(8) h3 { color:#84cc16; }
+
+
+/* GRADIENT + GLOW + HOVER HEADINGS */
+.card2 h3 {
+  font-weight:700;
+  background: linear-gradient(90deg,#38bdf8,#22c55e,#f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* glow effect */
+.card2 h3 {
+  text-shadow: 0 0 8px rgba(56,189,248,0.4), 0 0 12px rgba(34,197,94,0.3);
+}
+
+/* hover color change */
+.card2:hover h3 {
+  background: linear-gradient(90deg,#f97316,#a855f7,#06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(249,115,22,0.6), 0 0 15px rgba(168,85,247,0.5);
+}
+
+
+/* ANIMATED GRADIENT (moving) */
+.card2 h3 {
+  font-weight:700;
+  background: linear-gradient(270deg,#38bdf8,#22c55e,#f97316,#a855f7,#06b6d4);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* NEON GLOW */
+.card2 h3 {
+  text-shadow:
+    0 0 6px rgba(56,189,248,0.6),
+    0 0 12px rgba(56,189,248,0.5),
+    0 0 20px rgba(34,197,94,0.5),
+    0 0 30px rgba(249,115,22,0.4);
+}
+
+/* HOVER SCALE + SHADOW */
+.card2 {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card2:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 25px rgba(56,189,248,0.4);
+}
+
+/* HOVER COLOR SHIFT */
+.card2:hover h3 {
+  background: linear-gradient(270deg,#f97316,#a855f7,#06b6d4,#22c55e);
+  background-size: 400% 400%;
+  animation: gradientMove 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* GLASSMORPHISM + BLUR */
+header {
+  background: linear-gradient(135deg, rgba(2,6,23,0.7), rgba(30,41,59,0.7));
+  backdrop-filter: blur(14px);
+}
+
+.card, .card2, .box {
+  background: rgba(30,41,59,0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+/* subtle glass shine */
+.card::before, .card2::before, .box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255,255,255,0.08), transparent 40%);
+  pointer-events: none;
+}
+
+/* lift on hover */
+.card:hover, .card2:hover, .box:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.6), 0 0 30px rgba(56,189,248,0.25);
+}
+
+/* glass section wrapper */
 section {
-  padding:30px;
-  margin:20px;
-  background:#1e293b;
-  border-radius:12px;
+  background: rgba(15,23,42,0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
-h2 {
-  color:#22c55e;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-/* FOOTER */
-footer {
-  text-align:center;
-  padding:20px;
-  background:#020617;
-}
 </style>
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<button class="toggle-btn" onclick="toggleMode()">🌙 Mode</button>
 
 <header>
   <h1>Smart Battery Swap Kiosk</h1>
-  <p>Swap. Charge. Go.</p>
+  <p class="tagline">Smart Charging Solution for Modern Cities</p>
+  <button onclick="document.getElementById('info').scrollIntoView()">Explore System</button>
 
-  <!-- FRONT TEAM -->
-  <div class="team-front">
-    <div>
-      <img src="arobindu.jpeg">
-      <p>Arobindu kumar Paul</p>
-    </div>
-    <div>
-      <img src="sakil.jpeg">
-      <p>S M Shakil</p>
-    </div>
-    <div>
-      <img src="mrinmoy.jpg.jpeg">
-      <p>Mirinmoy Mondal</p>
-    </div>
-    <div>
-      <img src="shemul.jpg">
-      <p>Robiul Islam Shemul</p>
-    </div>
-    <div>
-      <img src="hasib.jpeg">
-      <p>Abdullah Al Hasib</p>
-    </div>
+  <div class="team">
+    <div class="card"><img src="shemul.jpg"><p>Shemul</p></div>
+    <div class="card"><img src="arobindu.jpeg"><p class="marketing">Arobindu</p></div>
+    <div class="card"><img src="hasib.jpeg"><p>Hasib</p></div>
+    <div class="card"><img src="sakil.jpeg"><p class="finance">Sakil</p></div>
+    <div class="card"><img src="mrinmoy.jpg.jpeg"><p>Mrinmoy</p></div>
   </div>
-
 </header>
 
-<section>
-  <h2>Executive Summary</h2>
-  <p>Smart kiosks to rent and return power banks anytime using QR and mobile payment.</p>
+<section class="features">
+  <div class="box"><h3>⚡ Instant Access</h3><p>QR scan based fast rental system.</p></div>
+  <div class="box"><h3>📍 Multiple Locations</h3><p>Malls, campuses, stations.</p></div>
+  <div class="box"><h3>💳 Cashless</h3><p>Mobile banking support.</p></div>
 </section>
 
-<section class="grid">
-  <div>
-    <h2>Vision</h2>
-    <p>Charging everywhere.</p>
-  </div>
-  <div>
-    <h2>Mission</h2>
-    <p>Fast and reliable power access.</p>
-  </div>
+<section id="info" class="grid">
+  <div class="card2"><h3>Executive Summary</h3><p>Rent and return power banks anytime.</p></div>
+  <div class="card2"><h3>Market</h3><p>Students, travelers, urban users.</p></div>
+  <div class="card2"><h3>Industry</h3><p>Growing smartphone dependency in Bangladesh.</p></div>
+  <div class="card2"><h3>Technology</h3><p>IoT, QR, mobile apps.</p></div>
+  <div class="card2"><h3>Marketing</h3><p>Social media & partnerships.</p></div>
+  <div class="card2"><h3>Finance</h3><p>Revenue: rental & ads.</p></div>
+  <div class="card2"><h3>SWOT</h3><p>Convenient, costly, opportunity, competition.</p></div>
+  <div class="card2"><h3>Development</h3><p>Pilot → Expand → Scale.</p></div>
 </section>
 
-<section>
-  <h2>Market</h2>
-  <ul>
-    <li>Students & travelers</li>
-    <li>Emergency usage</li>
-    <li>Limited competitors</li>
-  </ul>
+<section class="chart">
+  <h2>📊 Financial Growth</h2>
+  <p>Year 1</p><div class="bar" style="width:30%"></div>
+  <p>Year 2</p><div class="bar" style="width:60%"></div>
+  <p>Year 3</p><div class="bar" style="width:90%"></div>
 </section>
 
-<section>
-  <h2>Industry</h2>
-  <p>Growing with smartphone usage in Bangladesh.</p>
-  <p>Flow: Supplier → Kiosk → User → Return → Recharge</p>
+<section class="map">
+  <h2>📍 Kiosk Locations (Bangladesh)</h2>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Bangladesh_map.png">
+  <p>Planned in Dhaka, Chittagong, and major cities.</p>
 </section>
 
-<section>
-  <h2>Marketing (4Ps)</h2>
-  <ul>
-    <li>Product: Power bank rental</li>
-    <li>Price: Low fee</li>
-    <li>Place: Malls & stations</li>
-    <li>Promotion: Social media</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Technology</h2>
-  <ul>
-    <li>IoT system</li>
-    <li>QR scan</li>
-    <li>Mobile app</li>
-  </ul>
-</section>
-
-<section>
-  <h2>SWOT</h2>
-  <ul>
-    <li>Strength: Easy, convenient</li>
-    <li>Weakness: High cost</li>
-    <li>Opportunity: Urban growth</li>
-    <li>Threat: Competition</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Development</h2>
-  <ul>
-    <li>Year 1: Pilot in Dhaka</li>
-    <li>Year 2: Expand cities</li>
-    <li>Year 3: Nationwide</li>
-  </ul>
-</section>
-
-<section>
+<section style="padding:40px">
   <h2>Contact</h2>
   <p>Email: info@smartkiosk.com</p>
-  <p>Phone: +880 1234-567890</p>
+  <p>Phone: +880123456789</p>
   <p>Location: Bangladesh</p>
 </section>
 
@@ -184,5 +231,35 @@ footer {
   <p>© 2026 Smart Kiosk Project</p>
 </footer>
 
+
+<section style="padding:40px;text-align:center">
+  <h2>📱 App Interface Demo</h2>
+  <div style="background:#1e293b;padding:20px;border-radius:15px;display:inline-block">
+    <p>Scan QR → Unlock Power Bank</p>
+    <button style="background:#22c55e;padding:10px 20px;border:none;border-radius:8px;color:black">Scan QR</button>
+    <p style="margin-top:10px">Battery Status: 🔋 85%</p>
+  </div>
+</section>
+
+<section style="padding:40px;text-align:center">
+  <h2>🔐 QR Simulation</h2>
+  <div style="background:white;color:black;padding:20px;display:inline-block;border-radius:10px">
+    <p>QR CODE</p>
+    <div style="width:100px;height:100px;background:black;margin:auto"></div>
+    <p>Scan to unlock kiosk</p>
+  </div>
+</section>
+
+
+<script>
+function toggleMode(){ document.body.classList.toggle('light-mode'); }
+const elements = document.querySelectorAll('.card, .card2, .box');
+window.addEventListener('scroll', ()=>{
+ elements.forEach(el=>{
+  const pos = el.getBoundingClientRect().top;
+  if(pos < window.innerHeight - 50){ el.classList.add('show'); }
+ });
+});
+</script>
 </body>
 </html>
